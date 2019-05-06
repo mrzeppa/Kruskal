@@ -1,6 +1,9 @@
 public class Main {
 
     public static void main(String[] args) {
+
+
+
         Graph g = new Graph(4, 5);
         g.addEdge(new Edge(0, 1, 10));
         g.addEdge(new Edge(0, 2, 6));

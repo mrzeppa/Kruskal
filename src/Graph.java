@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Graph {
     int v;
     int e;
-    List<Edge> edges = new ArrayList<>();
+    List <Edge> edges = new ArrayList<>();
+
 
     public Graph(int v, int e) {
         this.v = v;
@@ -16,6 +18,10 @@ public class Graph {
         edges.add(edge);
     }
 
+//    public void compare(Edge e1, Edge e2){
+//        return e1.getW().compareTo(e2.getW());
+//    }
+    Comparator<Edge> compareByWeight = Comparator.comparingInt(Edge::getW);
     public void kruskal(){
         DisjointSet dj = new DisjointSet();
         Node rs;
@@ -24,7 +30,7 @@ public class Graph {
         for(int i = 0; i < this.v; i++){
             dj.make();
         }
-        Collections.sort(edges);
+        Collections.sort(edges, compareByWeight);
 
         for(int i = 0; i < this.e; i++){
             rs = dj.find(dj.sets.get(this.edges.get(i).s));

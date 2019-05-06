@@ -2,11 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisjointSet {
-
     List<Node> sets = new ArrayList<>();
 
     public Node make() {
         Node node = new Node();
+//        node.key = key;
+        node.root = node;
+        node.rank = 0;
         sets.add(node);
         return node;
     }
